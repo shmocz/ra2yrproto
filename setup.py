@@ -3,11 +3,13 @@ import os
 import subprocess
 from setuptools.command.build_py import build_py
 from setuptools.command.sdist import sdist
-from setuptools import setup
+from setuptools import setup, find_packages
+import shutil
 
 SETUP_DIR = os.path.dirname(os.path.abspath(__file__))
 PROTO_DIR = os.path.join(SETUP_DIR, "ra2yrproto")
 
+PROTOC_EXE = os.environ.get("PROTOC_EXE", None) or shutil.which("protoc")
 
 def get_proto_sources(p):
     for d, _, ff in os.walk(p):
@@ -27,7 +29,7 @@ class BuildProto(build_py):
             if (
                 subprocess.call(
                     [
-                        "protoc",
+                        PROTOC_EXE,
                         "--python_out",
                         SETUP_DIR,
                         "--pyi_out",
@@ -45,5 +47,6 @@ class BuildProto(build_py):
 
 setup(
     cmdclass={"sdist": _Sdist, "build_py": BuildProto},
+    packages=find_packages(include=["ra2yrproto"]),
     package_data={"ra2yrproto": ["*.proto"]},
 )

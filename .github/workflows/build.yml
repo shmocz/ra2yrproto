@@ -1,0 +1,40 @@
+name: Build and release
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Store version number
+        run: |
+          VERSION=${GITHUB_REF_NAME#v}
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - name: Install deps and build wheel
+        run: |
+          ./build.sh
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: latest-release
+          path: dist/
+      - name: Upload New Release.
+        uses: softprops/action-gh-release@v1
+        with:
+          name: v${{ env.VERSION }}
+          tag_name: v${{ env.VERSION }}
+          body: ra2yrproto .proto definitions and Python package.
+          files: |
+            dist/ra2yrproto-${{ env.VERSION }}-py3-none-any.whl
+            dist/ra2yrproto-${{ env.VERSION }}.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
