@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools"]
+
+[project]
+name = "ra2yrproto"
+description = "Protobuf API specification for Red Alert 2: Yuri's Revenge"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "GPL 3"}
+dependencies = ["protobuf"]
+classifiers = [
+	"License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
+]
+version = "1"
+
+[project.urls]
+Repository = "https://github.com/shmocz/ra2yrproto"
