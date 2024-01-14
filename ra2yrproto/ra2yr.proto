@@ -562,6 +562,7 @@ message GameState {
   repeated Event megamission_list = 13;
   int32 tech_level = 14;
   repeated Cell cells_difference = 15;
+  uint32 crc = 16;
 }
 
 message StorageValue {

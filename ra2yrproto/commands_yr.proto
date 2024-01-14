@@ -38,6 +38,7 @@ message Configuration {
   // frame). Increase this if you are experiencing performance problems. Set 0
   // to disable.
   uint32 parse_map_data_interval = 3;
+  bool single_step = 4;
 }
 
 message InspectConfiguration {
