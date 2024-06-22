@@ -449,6 +449,10 @@ message Event {
     uint32 delay = 3;
   }
 
+  message Deploy {
+    TargetClass whom = 1;
+  }
+
   message Target {
     TargetClass whom = 1;
   }
@@ -507,6 +511,10 @@ message Event {
     int32 id = 2;
   }
 
+  message Sell {
+    TargetClass whom = 1;
+  }
+
   message SellCell {
     Coordinates cell = 1;
   }
@@ -528,8 +536,10 @@ message Event {
     SpecialPlace special_place = 14;
     Specific specific = 15;
     SellCell sell_cell = 16;
+    Deploy deploy = 17;
+    Sell sell = 18;
   }
-  uint32 timing = 17;
+  uint32 timing = 19;
 }
 
 message EventLists {

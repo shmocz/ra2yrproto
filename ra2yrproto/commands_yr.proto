@@ -34,11 +34,12 @@ message MissionClicked {
 message Configuration {
   bool debug_log = 1;
   string record_filename = 2;
+  string traffic_filename = 3;
   // How many frames to pass before parsing map data again. Default is 1 (every
   // frame). Increase this if you are experiencing performance problems. Set 0
   // to disable.
-  uint32 parse_map_data_interval = 3;
-  bool single_step = 4;
+  uint32 parse_map_data_interval = 4;
+  bool single_step = 5;
 }
 
 message InspectConfiguration {
