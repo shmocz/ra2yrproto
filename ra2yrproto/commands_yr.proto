@@ -44,6 +44,7 @@ message Configuration {
 
 message InspectConfiguration {
   Configuration config = 1;
+  bool update = 2;
 }
 
 message AddEvent {
