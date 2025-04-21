@@ -40,6 +40,10 @@ message Configuration {
   // to disable.
   uint32 parse_map_data_interval = 4;
   bool single_step = 5;
+  uint32 port = 6;
+  uint32 max_connections = 7;
+  string allowed_hosts_regex = 8;
+  string log_filename = 9;
 }
 
 message InspectConfiguration {

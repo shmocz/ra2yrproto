@@ -11,7 +11,7 @@ dependencies = ["protobuf==4.25.1"]
 classifiers = [
 	"License :: OSI Approved :: GNU General Public License v3 (GPLv3)"
 ]
-version = "4"
+version = "5"
 
 [project.urls]
 Repository = "https://github.com/shmocz/ra2yrproto"
